@@ -8,18 +8,16 @@ case "$CMD" in
         if [ ! -d "src" ]; then
             composer global require zendframework/zendframework
             composer create-project zendframework/skeleton-application ./src
-			composer global require "squizlabs/php_codesniffer=*"
+            composer global require "squizlabs/php_codesniffer=*"
         fi
 
         cd src
         composer update
         composer install
 
-        # Add db
         composer require zendframework/zend-db
-        # composer require --dev zendframework/zend-component-installer
 
-        #composer serve
+		echo "Running application on 8080"
         php -S 0.0.0.0:8080 -t public/
         ;;
     * )
